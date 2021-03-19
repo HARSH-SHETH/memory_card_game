@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from "react";
 import './App.css';
 
+import GameHeader from "./GameHeader.js";
 function App() {
+  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+
+  const changeScore = () => {
+    if(score < 8)
+      setScore(score+1);
+    else{
+      if(bestScore < score){
+        setBestScore(score);
+      }
+      setScore(0);
+    }
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GameHeader score={score} bestScore={bestScore}/>
+    </>
   );
 }
 
