@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
 
-import GameHeader from "./GameHeader.js";
+import GameHeader from './GameHeader.js';
+import GameCards from './GameCards.js';
+
 function App() {
   const [score, setScore] = useState(0);
+  const [cards, setCards] = useState(12);
   const [bestScore, setBestScore] = useState(0);
 
   const changeScore = () => {
@@ -18,7 +21,15 @@ function App() {
   }
   return (
     <>
-      <GameHeader score={score} bestScore={bestScore}/>
+      <GameHeader 
+        score={score} 
+        bestScore={bestScore}
+      />
+      <GameCards 
+        cards={cards} 
+        score={score} 
+        changeScore={changeScore} 
+      />
     </>
   );
 }
