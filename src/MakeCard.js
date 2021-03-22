@@ -3,7 +3,10 @@ import React from "react";
 export default function MakeCard(props){
   return(
     <div>
-      <img src={props.image} alt={props.image}/> 
+    <img 
+    // onClick={(e) => props.shuffleCards(e) }
+    src={props.image.src} 
+    alt={props.image.src}/> 
     </div>
   )
 }
