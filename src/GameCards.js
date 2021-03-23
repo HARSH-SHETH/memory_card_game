@@ -26,7 +26,7 @@ export default function GameCards(props){
     }
 
     let imgs = document.querySelectorAll("img")
-    for(let i = imgs.length-1; i >= 0; i--)
+    for(let i = 0; i < imgs.length; i++)
       imgs[i].addEventListener("click", shuffleCards);
 
 
