@@ -10,28 +10,19 @@ export default function GameCards(props){
       .then(images => setImages(images));
   }, [props.cards]);
 
-  useEffect(() => {
-    const shuffleCards = (e) => {
-      console.log("clicked");
-      let newImages = images;
-      for(let i = newImages.length - 1; i >= 0; i--){
-        let temp, j;
-        j = Math.floor(Math.random() * i);
-        temp = newImages[i];
-        newImages[i] = images[j];
-        newImages[j] = temp;
-      }
-      setImages(newImages);
-      console.log("newImages: ", images);
+  const shuffleCards = (e) => {
+    console.log("clicked");
+    let newImages = [...images];
+    for(let i = newImages.length - 1; i >= 0; i--){
+      let temp, j;
+      j = Math.floor(Math.random() * i);
+      temp = newImages[i];
+      newImages[i] = newImages[j];
+      newImages[j] = temp;
     }
-
-    let imgs = document.querySelectorAll("img")
-    for(let i = 0; i < imgs.length; i++)
-      imgs[i].addEventListener("click", shuffleCards);
-
-
-  }, [images])
-
+    setImages(newImages);
+    console.log("newImages: ", images);
+  }
 
 
   if(images.length === 0){
@@ -43,9 +34,9 @@ export default function GameCards(props){
       <div>
       {images.map((image, i) => 
         <MakeCard
-          image={image}
-          key={i}
-          // shuffleCards={shuffleCards}
+        image={image}
+        key={i}
+        shuffleCards={shuffleCards}
         />
       )}
       </div>
