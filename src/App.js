@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import './App.css';
 
 import GameHeader from './GameHeader.js';
@@ -10,7 +10,7 @@ function App() {
   const [bestScore, setBestScore] = useState(0);
 
   const changeScore = () => {
-    if(score < 8)
+    if(score < cards)
       setScore(score+1);
     else{
       if(bestScore < score){
@@ -29,6 +29,9 @@ function App() {
         cards={cards} 
         score={score} 
         changeScore={changeScore} 
+        score={score}
+        bestScore={bestScore}
+        changeScore={changeScore}
       />
     </>
   );

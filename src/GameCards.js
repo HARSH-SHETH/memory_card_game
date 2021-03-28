@@ -10,7 +10,7 @@ export default function GameCards(props){
       .then(images => setImages(images));
   }, [props.cards]);
 
-  const shuffleCards = (e) => {
+  const shuffleCards = () => {
     console.log("clicked");
     let newImages = [...images];
     for(let i = newImages.length - 1; i >= 0; i--){
@@ -34,9 +34,12 @@ export default function GameCards(props){
       <div>
       {images.map((image, i) => 
         <MakeCard
-        image={image}
-        key={i}
-        shuffleCards={shuffleCards}
+          image={image.src}
+          key={image.src}
+          shuffleCards={shuffleCards}
+          score={props.score}
+          bestScore={props.bestScore}
+          changeScore={props.changeScore}
         />
       )}
       </div>

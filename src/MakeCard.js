@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function MakeCard(props){
+  let [isClicked, setIsClicked] = useState(false);
+
+  const handleClickOnImage = () => {
+    if(isClicked){
+      if(props.score > props.bestscore){
+        // reset score 
+        // change bestScore
+      }
+      console.log(`Game Over for ${props.image}`) ;
+    }else{
+      props.changeScore();
+      props.shuffleCards();
+      setIsClicked(true);
+    }
+  }
   return(
     <div>
     <img 
-    onClick={(e) => props.shuffleCards(e) }
-    src={props.image.src} 
-    alt={props.image.src}/> 
+    onClick={handleClickOnImage}
+    src={props.image} 
+    alt={props.image}/> 
     </div>
   )
 }
