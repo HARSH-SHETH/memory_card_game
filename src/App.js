@@ -13,11 +13,17 @@ function App() {
     if(score < cards)
       setScore(score+1);
     else{
-      if(bestScore < score){
-        setBestScore(score);
-      }
-      setScore(0);
+      resetScore();
     }
+  }
+
+  const resetScore = () => {
+    if(bestScore < score){
+      setBestScore(score);
+      if(score === cards)
+        setCards(cards + 4);
+    }    
+    setScore(0);
   }
   return (
     <>
@@ -29,9 +35,8 @@ function App() {
         cards={cards} 
         score={score} 
         changeScore={changeScore} 
-        score={score}
         bestScore={bestScore}
-        changeScore={changeScore}
+        resetScore={resetScore}
       />
     </>
   );

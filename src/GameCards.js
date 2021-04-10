@@ -31,8 +31,8 @@ export default function GameCards(props){
     )
   }else{
     return(
-      <div>
-      {images.map((image, i) => 
+      <div class="GameCards">
+      {images.map((image) => 
         <MakeCard
           image={image.src}
           key={image.src}
@@ -40,6 +40,7 @@ export default function GameCards(props){
           score={props.score}
           bestScore={props.bestScore}
           changeScore={props.changeScore}
+          resetScore={props.resetScore}
         />
       )}
       </div>
