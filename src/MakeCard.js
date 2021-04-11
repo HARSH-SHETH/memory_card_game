@@ -10,9 +10,7 @@ export default function MakeCard(props){
 
   const handleClickOnImage = () => {
     if(isClicked){
-      // reset score 
-      props.resetScore();
-      console.log(`Game Over for ${props.image}`) ;
+      props.setGameOver(true);
     }else{
       props.changeScore();
       setIsClicked(true);

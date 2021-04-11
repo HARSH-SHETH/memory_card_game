@@ -1,14 +1,35 @@
 import React, { useState, useEffect } from 'react';
 
 import MakeCard from './MakeCard.js';
+import Inform from './Inform.js'
 
 export default function GameCards(props){
   const [images, setImages] = useState([{}]); 
+  const [isLoading, setIsLoading] = useState(true);
+  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     getImages(props.cards)
-      .then(images => setImages(images));
+      .then((images) => {
+        setImages(images)
+        setTimeout(() => setIsLoading(false), 200);
+        // setIsLoading(false);
+      });
   }, [props.cards]);
+
+  useEffect(() => {
+    if(gameOver === true){
+      props.resetScore();
+    }
+  }, [gameOver]);
+
+  useEffect(() => {
+    if(gameOver === true)
+      setTimeout(() => {
+        setGameOver(false);
+      }, 300)
+  }, [props.bestScore, props.score]);
 
   const shuffleCards = () => {
     console.log("clicked");
@@ -24,10 +45,19 @@ export default function GameCards(props){
     console.log("newImages: ", images);
   }
 
-
-  if(images.length === 0){
+  if(gameOver){
     return(
-      <h1>Loading...</h1>
+      <Inform 
+        msg="GameOver"
+        level=""
+      />
+    )
+  }else if(isLoading){
+    return(
+      <Inform 
+        msg="Level: "
+        level={props.level}
+      />
     )
   }else{
     return(
@@ -41,6 +71,7 @@ export default function GameCards(props){
           bestScore={props.bestScore}
           changeScore={props.changeScore}
           resetScore={props.resetScore}
+          setGameOver={setGameOver}
         />
       )}
       </div>

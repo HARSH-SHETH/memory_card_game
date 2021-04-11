@@ -1,6 +1,51 @@
 *{
   margin: 0px; 
   padding: 0px;
+  font-family: 'New Tegomin', serif;
+}
+
+body{
+  background: palegoldenrod;
+  color: #a7955f;
+}
+
+.loading{
+  text-align: center;
+  font-size: 100px; 
+  margin-top: 20px;
+}
+
+.gameheader h1{
+  text-align: center;
+  font-size: xxx-large;
+  /* text-decoration: underline; */
+  text-transform: capitalize;
+}
+
+.gameheader button{
+  border: 3px solid black;
+  background: #ad850d;
+  width: 10%;
+  letter-spacing: 1px;
+  font-weight: 800;
+  border-radius: 5px;
+  height: 2em;
+  transition-duration: 0.3s;
+}
+
+.gameheader button:hover{
+  width: 12%; 
+  height: 2.2em;
+}
+
+.gameheader div{
+  display: flex;
+  width: 80%;
+  margin: 20px auto;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-weight: 800;
+  letter-spacing: 5px;
 }
 
 .GameCards {
@@ -15,11 +60,11 @@ img{
   width: 200px;
   height: 200px; 
   margin: 15px; 
-  border: 5px solid; 
+  border: 5px solid #ad850d; 
   border-radius: 25px;
+  transition: opacity 0.3s;
 }
 
-image::hover{
-  position: relative;
-  left: 2px;
+img:hover{
+  opacity: 0.8;
 }
