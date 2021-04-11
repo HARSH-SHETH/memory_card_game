@@ -1,5 +1,5 @@
 # Memory Card Game
-Check  live [here](https://harsh-sheth.github.io/react_memory_card)
+Check  live [here](https://harsh-sheth.github.io/memory_card_game)
 
 ## Available Scripts
 
