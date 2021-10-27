@@ -61,7 +61,7 @@ export default function GameCards(props){
     )
   }else{
     return(
-      <div class="GameCards">
+      <div className="GameCards">
       {images.map((image) => 
         <MakeCard
           image={image.src}
